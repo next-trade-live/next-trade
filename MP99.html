@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ur" dir="ltr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Monthly Plan — $99</title>
+  <link rel="icon" type="image/png" href="Logo.jpg">
+  <style>
+    :root {
+      --bg: #0f172a;
+      /* page background */
+      --card: #1e293b;
+      /* boxes color */
+      --text: #e2e8f0;
+      /* light text */
+      --muted: #94a3b8;
+      /* muted text */
+      --accent: #22c55e;
+      /* buttons / highlights */
+      --accent-2: #10b981;
+      /* hover */
+      --ring: rgba(34, 197, 94, .35);
+    }
+
+    * {
+      box-sizing: border-box
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    .container {
+      min-height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 56px;
+    }
+
+    header {
+      text-align: center;
+      padding: 28px 0 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      background: linear-gradient(90deg, rgba(34, 197, 94, .15), rgba(56, 189, 248, .15));
+      border: 1px solid rgba(148, 163, 184, .25);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 12px;
+      letter-spacing: .4px;
+      backdrop-filter: blur(4px);
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 46px);
+      margin: 10px 0 6px
+    }
+
+    .sub {
+      color: var(--muted);
+      font-size: clamp(14px, 2.2vw, 18px)
+    }
+
+    /* Pricing Card */
+    .pricing {
+      margin: 24px auto 34px;
+      display: grid;
+      place-items: center;
+    }
+
+    .card {
+      width: min(700px, 100%);
+      background: linear-gradient(180deg, rgba(255, 255, 255, .02), rgba(255, 255, 255, 0)), var(--card);
+      border: 1px solid rgba(148, 163, 184, .18);
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, .45), inset 0 1px 0 rgba(255, 255, 255, .06);
+      overflow: hidden;
+    }
+
+    .card-head {
+      padding: 22px 22px 6px;
+      text-align: center;
+    }
+
+    .price {
+      font-size: clamp(38px, 6vw, 60px);
+      font-weight: 800;
+      line-height: 1;
+      display: flex;
+      gap: 8px;
+      align-items: baseline;
+      justify-content: center;
+    }
+
+    .price small {
+      font-size: .35em;
+      color: var(--muted);
+      font-weight: 600
+    }
+
+    .features {
+      display: grid;
+      gap: 10px;
+      padding: 0 20px 22px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .feature {
+      background: rgba(15, 23, 42, .35);
+      border: 1px solid rgba(148, 163, 184, .18);
+      padding: 10px 14px;
+      border-radius: 12px;
+      text-align: center;
+      color: var(--text);
+    }
+
+    .cta {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      padding: 8px 20px 22px;
+    }
+
+    .btn {
+      appearance: none;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(180deg, var(--accent), var(--accent-2));
+      color: #052e16;
+      font-weight: 900;
+      letter-spacing: .3px;
+      padding: 14px 20px;
+      border-radius: 14px;
+      font-size: 16px;
+      box-shadow: 0 0 0 0 var(--ring), 0 10px 20px rgba(16, 185, 129, .18);
+      transition: transform .08s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .btn:hover {
+      filter: brightness(1.02);
+      box-shadow: 0 0 0 6px var(--ring), 0 12px 22px rgba(16, 185, 129, .24);
+    }
+
+    .btn:active {
+      transform: translateY(1px) scale(.99);
+    }
+
+    /* Payment Boxes */
+    .pay-wrap {
+      margin-top: 26px;
+    }
+
+    .pay-title {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: .4px;
+      margin-bottom: 14px;
+    }
+
+    .banks {
+      display: grid;
+      gap: 14px;
+    }
+
+    .bank {
+      background: var(--card);
+      border: 1px solid rgba(148, 163, 184, .22);
+      border-radius: 16px;
+      padding: 14px 16px;
+      display: grid;
+      gap: 8px;
+      text-align: center;
+      position: relative;
+      transition: transform .15s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .bank:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(2, 6, 23, .45);
+      border-color: rgba(148, 163, 184, .36);
+    }
+
+    .bank .row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .label {
+      color: #cbd5e1;
+      font-weight: 700;
+    }
+
+    .value {
+      color: #f1f5f9;
+      font-weight: 800;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .copy {
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, .25);
+      background: rgba(148, 163, 184, .08);
+      color: #cbd5e1;
+      cursor: pointer;
+    }
+
+    .more {
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .link-btn {
+      background: transparent;
+      border: 1px solid rgba(148, 163, 184, .35);
+      color: #e2e8f0;
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    .link-btn:hover {
+      background: rgba(148, 163, 184, .08);
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 36px 0 26px;
+      font-size: 14px;
+    }
+
+    /* Responsive */
+    @media (min-width: 700px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* 3 in a row on desktop */
+      .banks {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      /* 2 in a row for cards */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="wrap">
+      <header>
+        <span class="badge">Premium Access</span>
+        <h1>Monthly Plan — <span style="color:#a7f3d0">$99</span></h1>
+        <p class="sub">High‑impact tools, priority support, and regular updates — all in one simple plan.</p>
+      </header>
+      <section class="pricing" aria-label="pricing">
+        <div class="card" role="region" aria-labelledby="priceTitle">
+          <div class="card-head">
+            <div class="price" id="priceTitle">
+              <span>$99</span><small>/ month</small>
+            </div>
+          </div>
+          <div class="features">
+            <div class="feature">Unlimited project revisions</div>
+            <div class="feature">24/7 priority chat support</div>
+            <div class="feature">Access to premium resources</div>
+          </div>
+          <div class="cta">
+            <button class="btn"
+              onclick="document.getElementById('pay').scrollIntoView({behavior:'smooth', block:'start'})">Get
+              Started</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="pay" class="pay-wrap" aria-label="payment methods">
+        <h2 class="pay-title">Pay via Bank / Wallets</h2>
+        <div class="banks" id="bankList">
+          <!-- 1) Bank Al Habib -->
+          <article class="bank" data-acc="1029-0095-009306-01-2">
+            <button class="copy" title="Copy A/C #" onclick="copyAcc(this)">Copy</button>
+            <div class="row"><span class="label">Bank Al Habib</span><span>|</span><span class="value">Donish
+                Sultan</span></div>
+            <div class="row"><span class="label">A/C #:</span><span class="value">1029-0095-009306-01-2</span></div>
+            <div class="note">Note: Please include your email in the payment reference.</div>
+          </article>
+
+          <!-- 2) Easypaisa -->
+          <article class="bank" data-acc="0335 3459825">
+            <button class="copy" title="Copy A/C #" onclick="copyAcc(this)">Copy</button>
+            <div class="row"><span class="label">Easypaisa</span><span>|</span><span class="value">Danish Sultan</span>
+            </div>
+            <div class="row"><span class="label">A/C #:</span><span class="value">0335 3459825</span></div>
+            <div class="note">Note: Please include your email in the payment reference.</div>
+          </article>
+
+          <!-- 3) JazzCash -->
+          <article class="bank" data-acc="0335 3459825">
+            <button class="copy" title="Copy A/C #" onclick="copyAcc(this)">Copy</button>
+            <div class="row"><span class="label">Jazzcash</span><span>|</span><span class="value">Danish Sultan</span>
+            </div>
+            <div class="row"><span class="label">A/C #:</span><span class="value">0335 3459825</span></div>
+            <div class="note">Note: Please include your email in the payment reference.</div>
+          </article>
+        </div>
+        <div class="more">
+          <button id="moreBtn" class="link-btn" onclick="toggleMore()">View more</button>
+        </div>
+
+        <!-- Hidden (revealed on click) -->
+        <div class="banks" id="moreBanks" style="display:none; margin-top:14px;">
+          <!-- 4) Sadapay -->
+          <article class="bank" data-acc="0335 3459825">
+            <button class="copy" title="Copy A/C #" onclick="copyAcc(this)">Copy</button>
+            <div class="row"><span class="label">Sadapay</span><span>|</span><span class="value">Danish Sultan</span>
+            </div>
+            <div class="row"><span class="label">A/C #:</span><span class="value">0335 3459825</span></div>
+            <div class="note">Note: Please include your email in the payment reference.</div>
+          </article>
+
+          <!-- 5) NayaPay -->
+          <article class="bank" data-acc="0335 3459825">
+            <button class="copy" title="Copy A/C #" onclick="copyAcc(this)">Copy</button>
+            <div class="row"><span class="label">Nayapay</span><span>|</span><span class="value">Danish Sultan</span>
+            </div>
+            <div class="row"><span class="label">A/C #:</span><span class="value">0335 3459825</span></div>
+            <div class="note">Note: Please include your email in the payment reference.</div>
+          </article>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      © <span id="y"></span> All rights reserved — Secure payments. Need help? Email support after your transfer.
+    </footer>
+
+  </div>
+  <script>
+    // Copy account number from any card
+    function copyAcc(btn) {
+      const parent = btn.closest('.bank');
+      const acc = parent?.dataset?.acc || parent.querySelector('.row:nth-child(3) .value')?.textContent?.trim();
+      if (!acc) return;
+      navigator.clipboard.writeText(acc).then(() => {
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = 'Copy', 1400);
+      });
+    }
+
+    // Toggle more banks
+    function toggleMore() {
+      const more = document.getElementById('moreBanks');
+      const btn = document.getElementById('moreBtn');
+      const isHidden = more.style.display === 'none';
+      more.style.display = isHidden ? 'grid' : 'none';
+      btn.textContent = isHidden ? 'View less' : 'View more';
+      if (isHidden) { more.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    }
+
+    // year in footer
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>
